@@ -1,23 +1,32 @@
 
 export const dropDownMenu = () => {
     console.log('dropDownMenu')
-const menuButton = document.getElementById('dropdown');
+
 const content = document.getElementById('content');
-const menuItems = document.querySelectorAll('.menu-item')
 
-const menuContainer = document.getElementById('menu-list');
 
+const menuContainer = document.querySelectorAll('.menu');
+
+menuContainer.forEach(container => {
+const menuButton = container.querySelector('.dropdown');
+const menuList = container.querySelector('.menu-list')
+const menuItems = container.querySelectorAll('.menu-item')
 menuButton.addEventListener("mouseenter", ()=>{
-    menuContainer.classList.remove('invisible')
+    menuList.classList.remove('invisible')
 })
 
 menuButton.addEventListener("mouseleave", ()=>{
-    menuContainer.classList.add("invisible")
+     menuList.classList.add("invisible")
 })
 
-menuContainer.addEventListener("mouseover", () =>{
-    menuContainer.classList.remove("invisible")
+ menuList.addEventListener("mouseenter", () =>{
+    menuList.classList.remove("invisible")
 })
+
+ menuList.addEventListener("mouseleave", () =>{
+    menuList.classList.add("invisible")
+})
+
 menuItems.forEach(item => {
     item.addEventListener("mouseenter", ()=>{
         item.classList.add("selected-item");
@@ -30,6 +39,7 @@ menuItems.forEach(item => {
     })
 })
 
+})
 
 return menuButton
 }
